@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information System - Login</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+    <link rel="stylesheet" href="student_login.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Left Panel -->
+        <div class="left-panel">
+            <div class="logo"></div>
+            <div class="cover-text">STO. NINO NATIONAL HIGH SCHOOL</div>
+        </div>
+        
+        <!-- Right Panel -->
+        <div class="right-panel">
+            <div class="system-title">Welcome,<br>Students!</div>
+            
+            <div class="subtitle">Please login to your account.</div>
+            
+            <!-- ✅ Wrapped in a form that uses POST and points to Flask route -->
+            <form class="login-form" action="/student/login" method="POST">
+                <div class="form-group">
+                    <label for="username">Learner's Reference Number (LRN):</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                
+                <div class="forgot-password">
+                    <a href="#">Forgot Password?</a>
+                </div>
+                
+                <button type="submit" class="login-button">Login</button>
+                
+                <div class="terms">Terms and Conditions & Privacy Policy</div>
+            </form>
+            <div class="social-icons">
+                <a href="https://twitter.com/yourpage" class="social-icon" target="_blank" aria-label="Twitter">
+                    <img src="https://cdn-icons-png.flaticon.com/128/733/733635.png">
+                </a>
+                <a href="https://facebook.com/yourpage" class="social-icon" target="_blank" aria-label="Facebook">
+                    <img src="https://cdn-icons-png.flaticon.com/128/3128/3128208.png">
+                </a>
+                <a href="mailto:you@example.com" class="social-icon" aria-label="Email">
+                    <img src="https://cdn-icons-png.flaticon.com/128/1240/1240972.png">
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

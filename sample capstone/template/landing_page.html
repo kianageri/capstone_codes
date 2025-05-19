@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="landing_page.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <div class="logo"></div>
+            <h1 class="cover-text">STO. NINO NATIONAL HIGH SCHOOL</h1>
+            <div class="cover-image"></div>
+        </div>
+        
+        <div class="right-panel">
+            <img src="https://th.bing.com/th/id/R.ef5987e1ba43cbdccc29a4e5b9bcb9b1?rik=qmq5oy6qlI%2fT5Q&riu=http%3a%2f%2fstoninoshs.depedparanaquecity.com%2fwp-content%2fuploads%2f2021%2f05%2flogo.png&ehk=mCA5sxnXAoA5B99G%2fiuWnFWAk7PlzwwLjn%2bFBRO%2b4wI%3d&risl=&pid=ImgRaw&r=0" alt="System Logo" class="system-logo">
+            <h2 class="welcome-title">Welcome</h2>
+            <p class="subtitle">Click your destination.</p>
+            
+            <div class="login-form">
+                <button class="login-button" id="studentLoginBtn"> Student</button>
+                <button class="login-button" id="teacherLoginBtn">Teacher</button>
+            </div>
+            
+            <p class="terms">Terms and Conditions & Privacy Policy</p>
+            <p class="contact">Contact</p>
+            
+            <div class="footer-icons">
+                <div class="footer-icon"></div>
+                <div class="footer-icon"></div>
+                <div class="footer-icon"></div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    document.getElementById("studentLoginBtn").onclick = function() {
+        window.location.href = "Student/student_login.html";
+    };
+
+    document.getElementById("teacherLoginBtn").onclick = function() {
+        window.location.href = "Teacher/teacher_login.html";
+    };
+</script>
+
+
+</body>
+</html>
