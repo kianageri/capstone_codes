@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Classes - Sto. Niño National High School</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/teacher-common.css" />
+  <link rel="stylesheet" href="css/teacher-sidebar.css" />
+  <link rel="stylesheet" href="css/teacher-classes.css" />
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo-container">
+      <img src="../images/logo.jpg" alt="School Logo">
+    </div>
+    <ul>
+      <li>
+        <a href="teacher-dashboard.html">
+          <span class="icon"><img src="https://cdn-icons-png.flaticon.com/128/7655/7655679.png" alt="Announcements Icon"></span>
+          Announcements
+        </a>
+      </li>
+      <li class="active">
+        <a href="teacher-classes.html">
+          <span class="icon"><img src="https://cdn-icons-png.flaticon.com/128/3388/3388614.png" alt="Classes Icon"></span>
+          Classes
+        </a>
+      </li>
+      <li>
+        <a href="teacher-masterlist.html">
+          <span class="icon"><img src="https://cdn-icons-png.flaticon.com/128/3426/3426653.png" alt="Masterlist Icon"></span>
+          Masterlist
+        </a>
+      </li>
+      <li>
+        <a href="teacher-message.html">
+          <span class="icon"><img src="https://cdn-icons-png.flaticon.com/128/9327/9327205.png" alt="Messages Icon"></span>
+          Messages
+        </a>
+      </li>
+      <li>
+        <a href="teacher-profile.html">
+          <span class="icon"><img src="https://cdn-icons-png.flaticon.com/128/3033/3033143.png" alt="Profile Icon"></span>
+          Profile
+        </a>
+      </li>
+      <li>
+        <a href="teacher-help.html">
+          <span class="icon"><img src="https://cdn-icons-png.flaticon.com/128/1828/1828940.png" alt="Help Icon"></span>
+          Help
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="top-header">
+    <div class="school-name">
+      Sto. Niño National High School
+    </div>
+    <div class="header-controls">
+      <div class="notifications">
+        <img src="https://cdn-icons-png.flaticon.com/128/3602/3602145.png" alt="Notifications" class="icon">
+        <span class="badge">3</span>
+      </div>
+      <div class="user-controls">
+        <div class="user-info">
+          <div class="user-name">Angelica Nanas</div>
+          <div class="user-role">Science Teacher</div>
+        </div>
+        <div class="user-avatar">
+          <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="User Avatar">
+        </div>
+        <button class="logout-btn">Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="header">
+      <h1>Classes</h1>
+    </div>
+    
+    <div class="info-cards">
+      <div class="card">
+        <h3>Total Classes</h3>
+        <div class="icon">
+          <img src="https://cdn-icons-png.flaticon.com/128/3388/3388614.png" alt="Classes Icon">
+        </div>
+        <div class="number">4</div>
+        <div class="subtext">Active Classes</div>
+      </div>
+      <div class="card">
+        <h3>Students</h3>
+        <div class="icon">
+          <img src="https://cdn-icons-png.flaticon.com/128/3426/3426653.png" alt="Students Icon">
+        </div>
+        <div class="number">40</div>
+        <div class="subtext">Total Students</div>
+      </div>
+      <div class="card">
+        <h3>Hours</h3>
+        <div class="icon">
+          <img src="https://cdn-icons-png.flaticon.com/128/2838/2838779.png" alt="Hours Icon">
+        </div>
+        <div class="number">24</div>
+        <div class="subtext">Weekly Hours</div>
+      </div>
+    </div>
+    
+    <div class="schedule-container">
+      <div class="schedule-card">
+        <h2>Weekly Class Schedule</h2>
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Monday</th>
+              <th>Tuesday</th>
+              <th>Wednesday</th>
+              <th>Thursday</th>
+              <th>Friday</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>7:00 - 8:00</td>
+              <td><span class="class-pill class-lilac">8 - LILAC</span></td>
+              <td><span class="class-pill class-iris">8 - IRIS</span></td>
+              <td><span class="class-pill class-lilac">8 - LILAC</span></td>
+              <td><span class="class-pill class-lilac">8 - LILAC</span></td>
+              <td><span class="class-pill class-lilac">8 - LILAC</span></td>
+            </tr>
+            <tr>
+              <td>8:00 - 9:00</td>
+              <td><span class="class-pill class-daisy">9 - DAISY</span></td>
+              <td><span class="class-pill class-tulip">8 - TULIP</span></td>
+              <td><span class="class-pill class-tulip">8 - TULIP</span></td>
+              <td><span class="class-pill class-tulip">8 - TULIP</span></td>
+              <td><span class="class-pill class-tulip">8 - TULIP</span></td>
+            </tr>
+            <tr>
+              <td>9:00 - 9:15</td>
+              <td colspan="5" class="break">Break Time</td>
+            </tr>
+            <tr>
+              <td>9:15 - 10:15</td>
+              <td><span class="class-pill class-daisy">9 - DAISY</span></td>
+              <td><span class="class-pill class-daisy">9 - DAISY</span></td>
+              <td><span class="class-pill class-daisy">9 - DAISY</span></td>
+              <td><span class="class-pill class-daisy">9 - DAISY</span></td>
+              <td><span class="class-pill class-daisy">9 - DAISY</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Logout functionality
+    document.querySelector('.logout-btn').addEventListener('click', function() {
+      window.location.href = 'teacher-login.html';
+    });
+  </script>
+</body>
+</html>

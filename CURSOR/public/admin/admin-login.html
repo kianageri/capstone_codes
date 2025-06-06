@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Teacher Login - School Information System</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Optional: inline styles for error message */
+    .error-message {
+      color: red;
+      margin-bottom: 15px;
+      display: none;
+      font-weight: 600;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-main-page">
+    <div class="rectangle-1">
+      <img src="../images/logo.jpg" alt="School Logo" class="school-logo" />
+      <div class="cover-title">STO. NINO NATIONAL HIGH SCHOOL</div>
+    </div>
+    <div class="right-content">
+      <h1 class="welcome-text">Welcome, Admin!</h1>
+      <p class="click-destination">Please login to your account.</p>
+
+      <div id="error" class="error-message">Invalid Employee ID or Password.</div>
+
+      <form id="loginForm">
+        <label for="admin-id">Employee ID:</label>
+        <input type="text" id="admin-id" name="admin-id" required />
+        <label for="admin-password">Password:</label>
+        <input type="password" id="admin-password" name="admin-password" required />
+        <a href="#" class="forgot-link">Forgot Password</a>
+        <button type="submit" class="btn btn-login">Login</button>
+      </form>
+
+      <p class="terms-conditions">Terms and Conditions &amp; Privacy Policy</p>
+      <div class="footer-icons">
+        <div class="footer-icon facebook"></div>
+        <div class="footer-icon twitter"></div>
+        <div class="footer-icon linkedin"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      const employeeId = document.getElementById('admin-id').value.trim();
+      const password = document.getElementById('admin-password').value.trim();
+      const errorDiv = document.getElementById('error');
+
+      // Fixed credentials
+      const validUsername = 'admin';
+      const validPassword = '12345';
+
+      if (employeeId === validUsername && password === validPassword) {
+        errorDiv.style.display = 'none';
+        // Redirect to teacher dashboard (update URL as needed)
+        window.location.href = 'admin/admin-dashboard.html';
+      } else {
+        errorDiv.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+  /* Reset some defaults */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f8fdf8;
+    color: #000;
+  }
+  /* Sidebar */
+  .sidebar {
+    width: 220px;
+    background-color: #4c7a67; /* green shade */
+    height: 100vh;
+    padding: 20px 0;
+    position: fixed;
+  }
+  .sidebar .user {
+    margin: 0 20px 20px;
+    padding: 6px 12px;
+    background-color: #a1c8b8;
+    border-radius: 15px;
+    font-weight: 600;
+  }
+  .sidebar ul {
+    list-style: none;
+    padding: 0 10px;
+  }
+  .sidebar ul li {
+    padding: 12px 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #e6f0ea;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+  }
+  .sidebar ul li:hover, .sidebar ul li.active {
+    background-color: #a1c8b8;
+    color: #000;
+  }
+
+  .sidebar ul li span.icon {
+    margin-right: 8px;
+  }
+  .sidebar ul li span.icon img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  }
+
+  /* Main content */
+  .main-content {
+    margin-left: 220px;
+    padding: 30px;
+    background: #d8f0d8; /* pale green */
+    min-height: 100vh;
+  }
+  .main-content h1 {
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin-bottom: 25px;
+  }
+  /* Profile box */
+  .profile-box {
+    background: #4c7a67;
+    border-radius: 15px;
+    color: #fff;
+    padding: 20px;
+    width: 280px;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px;
+  }
+  .profile-box .greeting {
+    font-weight: 700;
+    font-size: 1.3rem;
+  }
+  .profile-box .avatar {
+    background-color: #3abf76;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin: 15px auto;
+  }
+  .profile-box button {
+    background-color: #3abf76;
+    border: none;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  /* Info cards */
+  .info-cards {
+    display: inline-flex;
+    gap: 15px;
+  }
+  .card {
+    background: #c6f1d2;
+    border-radius: 15px;
+    box-shadow: 0 6px 0 #79b97e;
+    padding: 15px 20px;
+    min-width: 110px;
+    text-align: center;
+  }
+  .card h3 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
+  .card .icon {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+  }
+  .card .number {
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+  .card .subtext {
+    font-size: 0.9rem;
+    color: #555;
+  }

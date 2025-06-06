@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Student Information System - Announcements</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+    <link rel="stylesheet" href="css/student-dashboard.css">
+    <style>
+        /* Remove the logo styles from here since they're in the CSS file */
+        
+        /* Top Header Styles */
+        .top-header {
+            background: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .school-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-green, #4c7a67);
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .notifications {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .notifications .icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .notifications .badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ef4444;
+            color: white;
+            font-size: 0.75rem;
+            padding: 0.125rem 0.375rem;
+            border-radius: 9999px;
+            font-weight: 500;
+        }
+
+        .user-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-info {
+            text-align: right;
+        }
+
+        .user-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .user-role {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logout-btn {
+            background: none;
+            border: none;
+            color: var(--primary-green, #4c7a67);
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .logout-btn:hover {
+            color: var(--hover-green, #5c8a77);
+            text-decoration: underline;
+        }
+
+        /* Loading Animation */
+        .btn-loading {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .btn-loading::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            border: 2px solid transparent;
+            border-top-color: currentColor;
+            border-radius: 50%;
+            animation: button-loading-spinner 0.6s linear infinite;
+        }
+
+        .btn-loading span {
+            opacity: 0;
+        }
+
+        @keyframes button-loading-spinner {
+            from {
+                transform: rotate(0turn);
+            }
+            to {
+                transform: rotate(1turn);
+            }
+        }
+
+        /* Success Animation */
+        .btn-success {
+            background-color: #10B981 !important;
+            color: white !important;
+        }
+
+        .btn-success::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn-success.animate::after {
+            opacity: 1;
+        }
+
+        /* Progress Bar */
+        .logout-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(to right, #4c7a67, #10B981);
+            transition: width 1.5s ease;
+            z-index: 1000;
+        }
+
+        .logout-progress.start {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<!-- Add progress bar -->
+<div class="logout-progress"></div>
+
+<div class="sidebar">
+    <div class="logo-container">
+        <img src="../images/logo.jpg" alt="School Logo">
+    </div>
+    <ul>
+        <li class="active">
+            <a href="student-dashboard.html">
+                <span class="icon"><img src="https://cdn-icons-png.flaticon.com/128/7655/7655679.png" alt="Announcements Icon"></span>
+                Announcements
+            </a>
+        </li>
+        <li>
+            <a href="student-grades.html">
+                <span class="icon"><img src="https://cdn-icons-png.flaticon.com/128/54/54507.png" alt="Grades Icon"></span>
+                Grades
+            </a>
+        </li>
+        <li>
+            <a href="student-schedule.html">
+                <span class="icon"><img src="https://cdn-icons-png.flaticon.com/128/7676/7676284.png" alt="Schedule Icon"></span>
+                Schedule
+            </a>
+        </li>
+        <li>
+            <a href="student-enrollment.html">
+                <span class="icon"><img src="https://cdn-icons-png.flaticon.com/128/166/166088.png" alt="Enrollment Icon"></span>
+                Enrollment
+            </a>
+        </li>
+        <li>
+            <a href="student-notifications.html">
+                <span class="icon"><img src="https://cdn-icons-png.flaticon.com/128/3239/3239952.png" alt="Notifications Icon"></span>
+                Notifications
+            </a>
+        </li>
+        <li>
+            <a href="student-messages.html">
+                <span class="icon"><img src="https://cdn-icons-png.flaticon.com/128/9327/9327205.png" alt="Messages Icon"></span>
+                Messages
+            </a>
+        </li>
+        <li>
+            <a href="student-profile.html">
+                <span class="icon"><img src="https://cdn-icons-png.flaticon.com/128/3033/3033143.png" alt="Profile Icon"></span>
+                Profile
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="top-header">
+    <div class="school-name">
+        Sto. Niño National High School
+    </div>
+    <div class="header-controls">
+        <div class="notifications">
+            <img src="https://cdn-icons-png.flaticon.com/128/3602/3602145.png" alt="Notifications" class="icon">
+            <span class="badge">3</span>
+        </div>
+        <div class="user-controls">
+            <div class="user-info">
+                <div class="user-name">Kiana Mae Alvarez</div>
+                <div class="user-role">Grade 8 - Section Lilac</div>
+            </div>
+            <div class="user-avatar">
+                <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="User Avatar">
+            </div>
+            <button class="logout-btn">
+                <span>Logout</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="main-content">
+    <h1>Announcements</h1>
+    
+    <div class="profile-box">
+        <div class="greeting">Welcome, Kiana Mae</div>
+        <button onclick="window.location.href='student-profile.html'">View Profile</button>
+    </div>
+    
+    <div class="info-cards">
+        <div class="card">
+            <h3>Events</h3>
+            <div class="icon"><img src="https://cdn-icons-png.flaticon.com/128/2693/2693507.png" alt="Events Icon"></div>
+            <div class="number">0</div>
+            <div class="subtext">Upcoming</div>
+        </div>
+        <div class="card">
+            <h3>Viewed</h3>
+            <div class="icon"><img src="https://cdn-icons-png.flaticon.com/128/9327/9327205.png" alt="Viewed Icon"></div>
+            <div class="number">1</div>
+            <div class="subtext">Today</div>
+        </div>
+        <div class="card">
+            <h3>Unread</h3>
+            <div class="icon"><img src="https://cdn-icons-png.flaticon.com/128/1944/1944250.png" alt="Unread Icon"></div>
+            <div class="number">4</div>
+            <div class="subtext">Messages</div>
+        </div>
+    </div>
+    
+    <div class="announcements-list">
+        <!-- Announcements content will go here -->
+    </div>
+</div>
+
+<script>
+    // Logout functionality with animation
+    document.querySelector('.logout-btn').addEventListener('click', function(e) {
+        const btn = e.currentTarget;
+        const btnText = btn.querySelector('span');
+        const progressBar = document.querySelector('.logout-progress');
+        
+        // Add loading animation
+        btn.classList.add('btn-loading');
+        btnText.textContent = 'Logging out...';
+        progressBar.classList.add('start');
+        
+        // Simulate logout process
+        setTimeout(() => {
+            btn.classList.remove('btn-loading');
+            btn.classList.add('btn-success', 'animate');
+            btnText.textContent = 'Goodbye!';
+            
+            // Redirect after success animation
+            setTimeout(() => {
+                window.location.href = 'student-login.html';
+            }, 1000);
+        }, 1500);
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Teacher Dashboard - Sto. Niño National High School</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/teacher-common.css" />
+  <link rel="stylesheet" href="css/teacher-sidebar.css" />
+  <link rel="stylesheet" href="css/teacher-dashboard.css" />
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo-container">
+      <img src="../images/logo.jpg" alt="School Logo">
+    </div>
+    <ul>
+      <li class="active">
+        <a href="teacher-dashboard.html">
+          <span class="icon"><img src="https://cdn-icons-png.flaticon.com/128/7655/7655679.png" alt="Announcements Icon"></span>
+          Announcements
+        </a>
+      </li>
+      <li>
+        <a href="teacher-classes.html">
+          <span class="icon"><img src="https://cdn-icons-png.flaticon.com/128/3388/3388614.png" alt="Classes Icon"></span>
+          Classes
+        </a>
+      </li>
+      <li>
+        <a href="teacher-masterlist.html">
+          <span class="icon"><img src="https://cdn-icons-png.flaticon.com/128/3426/3426653.png" alt="Masterlist Icon"></span>
+          Masterlist
+        </a>
+      </li>
+      <li>
+        <a href="teacher-message.html">
+          <span class="icon"><img src="https://cdn-icons-png.flaticon.com/128/9327/9327205.png" alt="Messages Icon"></span>
+          Messages
+        </a>
+      </li>
+      <li>
+        <a href="teacher-profile.html">
+          <span class="icon"><img src="https://cdn-icons-png.flaticon.com/128/3033/3033143.png" alt="Profile Icon"></span>
+          Profile
+        </a>
+      </li>
+      <li>
+        <a href="teacher-help.html">
+          <span class="icon"><img src="https://cdn-icons-png.flaticon.com/128/1828/1828940.png" alt="Help Icon"></span>
+          Help
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="top-header">
+    <div class="school-name">
+      Sto. Niño National High School
+    </div>
+    <div class="header-controls">
+      <div class="notifications">
+        <img src="https://cdn-icons-png.flaticon.com/128/3602/3602145.png" alt="Notifications" class="icon">
+        <span class="badge">3</span>
+      </div>
+      <div class="user-controls">
+        <div class="user-info">
+          <div class="user-name">Angelica Nanas</div>
+          <div class="user-role">Science Teacher</div>
+        </div>
+        <div class="user-avatar">
+          <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="User Avatar">
+        </div>
+        <button class="logout-btn btn-smart-animate">
+          <span>Logout</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="header">
+      <h1>Announcements</h1>
+      <button class="add-btn" id="add-announcement-btn">Add Announcement</button>
+    </div>
+    
+    <div class="profile-box">
+      <div class="greeting">Welcome, Angelica</div>
+      <button onclick="window.location.href='teacher-profile.html'">View Profile</button>
+    </div>
+    
+    <div class="info-cards">
+      <div class="card">
+        <h3>Events</h3>
+        <div class="icon">
+          <img src="https://cdn-icons-png.flaticon.com/128/2693/2693507.png" alt="Events Icon">
+        </div>
+        <div class="number">0</div>
+        <div class="subtext">Upcoming</div>
+      </div>
+      <div class="card">
+        <h3>Viewed</h3>
+        <div class="icon">
+          <img src="https://cdn-icons-png.flaticon.com/128/9327/9327205.png" alt="Viewed Icon">
+        </div>
+        <div class="number">27</div>
+        <div class="subtext">Today</div>
+      </div>
+      <div class="card">
+        <h3>Unread</h3>
+        <div class="icon">
+          <img src="https://cdn-icons-png.flaticon.com/128/1944/1944250.png" alt="Unread Icon">
+        </div>
+        <div class="number">6</div>
+        <div class="subtext">Messages</div>
+      </div>
+    </div>
+    
+    <div class="announcements-list">
+      <!-- Template for new announcements will be inserted here -->
+    </div>
+  </div>
+
+  <!-- Add Announcement Modal -->
+  <div id="announcement-modal" class="modal">
+    <div class="modal-content">
+      <h3>Add Announcement</h3>
+      <form id="announcement-form">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" required />
+
+        <label for="recipient">To / Year Level</label>
+        <input type="text" id="recipient" name="recipient" required />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <div class="modal-buttons">
+          <button type="button" id="cancel-btn" class="btn-secondary">Cancel</button>
+          <button type="submit" class="btn-primary">Post</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Logout functionality with animation
+    document.querySelector('.logout-btn').addEventListener('click', function(e) {
+      const btn = e.currentTarget;
+      const btnText = btn.querySelector('span');
+      
+      // Add loading animation
+      btn.classList.add('btn-loading');
+      btnText.textContent = 'Logging out...';
+      
+      // Simulate logout process
+      setTimeout(() => {
+        btn.classList.remove('btn-loading');
+        btn.classList.add('btn-success', 'animate');
+        btnText.textContent = 'Goodbye!';
+        
+        // Redirect after success animation
+        setTimeout(() => {
+          window.location.href = 'teacher-login.html';
+        }, 1000);
+      }, 1500);
+    });
+
+    // Modal functionality
+    const modal = document.getElementById('announcement-modal');
+    const addBtn = document.getElementById('add-announcement-btn');
+    const cancelBtn = document.getElementById('cancel-btn');
+    const announcementForm = document.getElementById('announcement-form');
+    const announcementsList = document.querySelector('.announcements-list');
+
+    // Sample announcements data
+    let announcements = [
+      {
+        subject: "School Reopening",
+        date: "August 1, 2025",
+        sender: "Admin",
+        message: "Classes will resume on August 15 with full safety protocols..."
+      },
+      {
+        subject: "Sports Day",
+        date: "July 20, 2025",
+        sender: "Sports Coordinator",
+        message: "Sports Day will be held on September 5. Please register your teams..."
+      }
+    ];
+
+    // Function to format date
+    function formatDate(date) {
+      return date.toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+      });
+    }
+
+    // Function to create announcement HTML
+    function createAnnouncementHTML(announcement) {
+      return `
+        <div class="announcement">
+          <h3>Subject: ${announcement.subject}</h3>
+          <p class="date">${announcement.date}</p>
+          <p class="sender">From: ${announcement.sender}</p>
+          <p class="preview">${announcement.message}</p>
+        </div>
+      `;
+    }
+
+    // Function to render all announcements
+    function renderAnnouncements() {
+      announcementsList.innerHTML = announcements
+        .map(announcement => createAnnouncementHTML(announcement))
+        .join('');
+    }
+
+    // Initial render
+    renderAnnouncements();
+
+    addBtn.addEventListener('click', () => {
+      modal.style.display = "flex";
+    });
+
+    function closeModal() {
+      modal.style.display = "none";
+      announcementForm.reset();
+    }
+
+    cancelBtn.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    announcementForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const subject = announcementForm.subject.value.trim();
+      const recipient = announcementForm.recipient.value.trim();
+      const message = announcementForm.message.value.trim();
+
+      if (subject && recipient && message) {
+        // Create new announcement object
+        const newAnnouncement = {
+          subject: subject,
+          date: formatDate(new Date()),
+          sender: "Teacher", // You can customize this based on logged-in user
+          message: message
+        };
+
+        // Add to beginning of announcements array
+        announcements.unshift(newAnnouncement);
+        
+        // Re-render announcements list
+        renderAnnouncements();
+
+        // Show success message
+        const successMessage = document.createElement('div');
+        successMessage.className = 'success-message';
+        successMessage.textContent = 'Announcement posted successfully!';
+        document.querySelector('.main-content').insertBefore(successMessage, announcementsList);
+
+        // Remove success message after 3 seconds
+        setTimeout(() => {
+          successMessage.remove();
+        }, 3000);
+
+        closeModal();
+      } else {
+        alert('Please fill in all fields.');
+      }
+    });
+  </script>
+
+  <style>
+    /* Add styles for success message */
+    .success-message {
+      background-color: #c6f6d5;
+      color: #2f855a;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 6px;
+      text-align: center;
+      font-weight: 500;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Style for new announcements */
+    .announcement {
+      animation: slideIn 0.3s ease-in-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  </style>
+</body>
+</html>

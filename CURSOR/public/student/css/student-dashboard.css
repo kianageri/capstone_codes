@@ -1,0 +1,440 @@
+/* Global variables */
+:root {
+    --primary-green: #4c7a67;
+    --light-green: #a1c8b8;
+    --bg-green: #e6f0ea;
+    --hover-green: #5c8a77;
+    --sidebar-width: 220px;
+    --header-height: 70px;
+    
+    /* Font sizes */
+    --text-xs: 0.75rem;    /* 12px */
+    --text-sm: 0.875rem;   /* 14px */
+    --text-base: 1rem;     /* 16px */
+    --text-lg: 1.125rem;   /* 18px */
+    --text-xl: 1.25rem;    /* 20px */
+    --text-2xl: 1.5rem;    /* 24px */
+    
+    /* Font weights */
+    --font-normal: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+}
+
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-size: var(--text-base);
+    line-height: 1.5;
+    color: #2d3748;
+    background-color: var(--bg-green);
+    min-height: 100vh;
+    padding-top: var(--header-height);
+}
+
+/* Top Header Styles */
+.top-header {
+    background: white;
+    height: var(--header-height);
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: var(--sidebar-width);
+    right: 0;
+    z-index: 20;
+}
+
+.school-name {
+    font-size: var(--text-xl);
+    font-weight: var(--font-semibold);
+    color: var(--primary-green);
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.notifications {
+    position: relative;
+    cursor: pointer;
+}
+
+.notifications .icon {
+    width: 24px;
+    height: 24px;
+}
+
+.notifications .badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #ef4444;
+    color: white;
+    font-size: var(--text-xs);
+    padding: 0.125rem 0.375rem;
+    border-radius: 9999px;
+    font-weight: var(--font-medium);
+}
+
+.user-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-info {
+    text-align: right;
+}
+
+.user-name {
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: #1f2937;
+}
+
+.user-role {
+    font-size: var(--text-xs);
+    color: #6b7280;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Sidebar styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background-color: #ffffff;
+    padding: 0;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+/* Custom scrollbar for sidebar */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: var(--light-green);
+    border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-green);
+}
+
+.sidebar .logo-container {
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar .logo-container img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 1.25rem;
+}
+
+.sidebar li {
+    margin-bottom: 0.25rem;
+}
+
+.sidebar li a {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 0.75rem;
+    color: #636e72;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.sidebar li:hover a,
+.sidebar li.active a {
+    color: var(--primary-green);
+    background-color: var(--bg-green);
+    transform: translateX(5px);
+}
+
+.sidebar .icon {
+    margin-right: 0.75rem;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar .icon img {
+    width: 18px;
+    height: 18px;
+}
+
+/* Main content styles */
+.main-content {
+    margin-left: var(--sidebar-width);
+    padding: 2rem;
+}
+
+.main-content h1 {
+    color: var(--primary-green);
+    font-size: var(--text-2xl);
+    font-weight: var(--font-semibold);
+    margin-bottom: 1.5rem;
+}
+
+/* Profile box styles */
+.profile-box {
+    background: white;
+    padding: 1.25rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--primary-green);
+}
+
+.greeting {
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    color: var(--primary-green);
+    margin-right: 1.25rem;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background: var(--light-green);
+    border-radius: 50%;
+    margin-right: 1.25rem;
+}
+
+.profile-box button {
+    background: var(--primary-green);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: var(--font-medium);
+    font-size: var(--text-sm);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.profile-box button:hover {
+    background: var(--hover-green);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(76, 122, 103, 0.2);
+}
+
+/* Info cards styles */
+.info-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(76, 122, 103, 0.2);
+    border-top: 3px solid var(--primary-green);
+}
+
+.card h3 {
+    color: var(--primary-green);
+    margin-bottom: 0.75rem;
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
+}
+
+.card .icon {
+    margin: 0.75rem 0;
+    padding: 0.75rem;
+    background: var(--bg-green);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card .icon img {
+    width: 30px;
+    height: 30px;
+}
+
+.card .number {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    color: var(--primary-green);
+    margin: 0.5rem 0;
+}
+
+.card .subtext {
+    color: #636e72;
+    font-size: var(--text-xs);
+}
+
+/* Announcements list styles */
+.announcements-list {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.announcement {
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.announcement:last-child {
+    border-bottom: none;
+}
+
+.announcement h3 {
+    color: var(--primary-green);
+    font-size: var(--text-base);
+    margin-bottom: 0.5rem;
+}
+
+.announcement .date {
+    color: #718096;
+    font-size: var(--text-xs);
+    margin-bottom: 0.5rem;
+}
+
+.announcement .preview {
+    color: #4a5568;
+    font-size: var(--text-sm);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    :root {
+        --sidebar-width: 60px;
+    }
+
+    .sidebar .logo-container img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .sidebar li span:not(.icon) {
+        display: none;
+    }
+
+    .top-header {
+        left: var(--sidebar-width);
+        padding: 0 1rem;
+    }
+
+    .school-name {
+        font-size: var(--text-base);
+    }
+
+    .user-info {
+        display: none;
+    }
+
+    .main-content {
+        padding: 1rem;
+    }
+
+    .info-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-box {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .greeting, .avatar {
+        margin-bottom: 0.75rem;
+        margin-right: 0;
+    }
+}
+
+/* Animation classes */
+.fade-in {
+    animation: fadeIn 0.3s ease-in;
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+} 
